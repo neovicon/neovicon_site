@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", "Inter", system-ui, sans-serif;
+  
+  /* NeoVicon Brand Colors */
+  --color-cyan-glow: #00d2ff;
+  --color-purple-glow: #7a28cb;
+  --color-purple-deep: #410a75;
+  
+  /* Dark Mode Palette */
+  --color-dark-900: #07070a;
+  --color-dark-800: #12121a;
+  --color-dark-700: #1a1a24;
+  --color-dark-border: rgba(255, 255, 255, 0.05);
+
+  /* Gradients */
+  --gradient-neon: linear-gradient(135deg, var(--color-cyan-glow) 0%, var(--color-purple-glow) 100%);
+}
+
+@layer base {
+  body {
+    @apply bg-dark-900 text-slate-200 antialiased min-h-screen selection:bg-purple-glow/30 selection:text-white;
+  }
+}
+
+@layer utilities {
+  .text-glow-cyan {
+    text-shadow: 0 0 10px rgba(0, 210, 255, 0.5), 0 0 20px rgba(0, 210, 255, 0.3);
+  }
+  
+  .text-glow-purple {
+    text-shadow: 0 0 10px rgba(122, 40, 203, 0.5), 0 0 20px rgba(122, 40, 203, 0.3);
+  }
+
+  .text-gradient {
+    background-image: var(--gradient-neon);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .bg-glass {
+    @apply bg-dark-800/60 backdrop-blur-xl border border-white/5;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+  
+  .hover-glow:hover {
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.4), inset 0 0 10px rgba(122, 40, 203, 0.2);
+    border-color: rgba(0, 210, 255, 0.4);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-dark-900);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-700);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-purple-deep);
+}
